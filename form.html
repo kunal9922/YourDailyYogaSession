@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yoga Registration Form</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: url('https://tse2.mm.bing.net/th/id/OIP.np61NZBl594DoYHbK0qYQQHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4a4a4a;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .gender, .hobbies {
+            margin-top: 10px;
+        }
+
+        .gender input,
+        .hobbies input {
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+
+        .yoga-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .yoga-image img {
+            max-width: 100px;
+        }
+
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var name = document.forms["yogaForm"]["name"].value;
+            var address = document.forms["yogaForm"]["address"].value;
+            var gender = document.forms["yogaForm"]["gender"];
+            var hobbies = document.forms["yogaForm"]["hobby"];
+            var city = document.forms["yogaForm"]["city"].value;
+            var country = document.forms["yogaForm"]["country"].value;
+            var dob = document.forms["yogaForm"]["dob"].value;
+
+            if (name == "" || address == "" || city == "" || country == "" || dob == "") {
+                alert("Please fill out all required fields.");
+                return false;
+            }
+
+            var genderSelected = false;
+            for (var i = 0; i < gender.length; i++) {
+                if (gender[i].checked) {
+                    genderSelected = true;
+                    break;
+                }
+            }
+
+            if (!genderSelected) {
+                alert("Please select your gender.");
+                return false;
+            }
+
+            var hobbySelected = false;
+            for (var i = 0; i < hobbies.length; i++) {
+                if (hobbies[i].checked) {
+                    hobbySelected = true;
+                    break;
+                }
+            }
+
+            if (!hobbySelected) {
+                alert("Please select at least one hobby.");
+                return false;
+            }
+
+            alert("Registration submitted successfully!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <div class="yoga-image">
+            <img src="https://cdn-icons-png.flaticon.com/512/2907/2907253.png" alt="Yoga Icon">
+        </div>
+        <h2>Yoga Registration Form</h2>
+        <form name="yogaForm" onsubmit="return validateForm()">
+            <label for="name">Name:</label>
+            <input type="text" name="name">
+
+            <label for="address">Address:</label>
+            <input type="text" name="address">
+
+            <label>Gender:</label>
+            <div class="gender">
+                <input type="radio" name="gender" value="Male"> Male
+                <input type="radio" name="gender" value="Female"> Female
+                <input type="radio" name="gender" value="Other"> Other
+            </div>
+
+            <label>Hobbies:</label>
+            <div class="hobbies">
+                <input type="checkbox" name="hobby" value="Meditation"> Meditation
+                <input type="checkbox" name="hobby" value="Asanas"> Asanas
+                <input type="checkbox" name="hobby" value="Pranayama"> Pranayama
+            </div>
+
+            <label for="city">City:</label>
+            <select name="city">
+                <option value="">Select City</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Bangalore">Bangalore</option>
+            </select>
+
+            <label for="country">Country:</label>
+            <select name="country">
+                <option value="">Select Country</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+            </select>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" name="dob">
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
